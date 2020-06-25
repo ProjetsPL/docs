@@ -1,0 +1,2861 @@
+---
+openapi: 3.0.1
+info:
+  title: ROOT API
+  version: v2
+paths:
+  "/v2/allowed_ips":
+    get:
+      summary: Get all allowed_ips
+      tags:
+      - AllowedIPs
+      responses:
+        '200':
+          description: allowed_ip found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/allowed_ip_response"
+                  meta:
+                    "$ref": "#/components/schemas/meta"
+                required:
+                - data
+                - meta
+    post:
+      summary: Creates a allowed_ip
+      tags:
+      - AllowedIPs
+      parameters: []
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/allowed_ip_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/allowed_ip_request"
+  "/v2/allowed_ips/{id}":
+    get:
+      summary: Get single allowed_ip
+      tags:
+      - AllowedIPs
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: allowed_ip found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/allowed_ip_response"
+    put:
+      summary: Update a allowed_ip
+      tags:
+      - AllowedIPs
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/allowed_ip_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/allowed_ip_request"
+    delete:
+      summary: Delete a allowed_ip
+      tags:
+      - AllowedIPs
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/allowed_ip_response"
+  "/v2/available_countries":
+    get:
+      summary: Get all available_countries
+      tags:
+      - AvailableCountries
+      responses:
+        '200':
+          description: available_country found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/available_country_response"
+                  meta:
+                    "$ref": "#/components/schemas/meta"
+                required:
+                - data
+                - meta
+    post:
+      summary: Creates a available_country
+      tags:
+      - AvailableCountries
+      parameters: []
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/available_country_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/available_country_request"
+  "/v2/available_countries/{id}":
+    delete:
+      summary: Delete a available_country
+      tags:
+      - AvailableCountries
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/available_country_response"
+  "/v2/available_currencies":
+    get:
+      summary: Get all available_currencies
+      tags:
+      - AvailableCurrencies
+      responses:
+        '200':
+          description: available_currency found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/available_currency_response"
+                  meta:
+                    "$ref": "#/components/schemas/meta"
+                required:
+                - data
+                - meta
+    post:
+      summary: Creates a available_currency
+      tags:
+      - AvailableCurrencies
+      parameters: []
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/available_currency_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/available_currency_request"
+  "/v2/available_currencies/{id}":
+    delete:
+      summary: Delete a available_currency
+      tags:
+      - AvailableCurrencies
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/available_currency_response"
+  "/v2/categories":
+    get:
+      summary: Get all categories
+      tags:
+      - Categories
+      responses:
+        '200':
+          description: category found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/category_response"
+                  meta:
+                    "$ref": "#/components/schemas/meta"
+                required:
+                - data
+                - meta
+    post:
+      summary: Creates a category
+      tags:
+      - Categories
+      parameters: []
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/category_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/category_request"
+  "/v2/categories/{id}":
+    get:
+      summary: Get single category
+      tags:
+      - Categories
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: category found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/category_response"
+    put:
+      summary: Update a category
+      tags:
+      - Categories
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/category_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/category_request"
+    delete:
+      summary: Delete a category
+      tags:
+      - Categories
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/category_response"
+  "/v2/channel_products":
+    post:
+      summary: Creates a channel_product
+      tags:
+      - ChannelProducts
+      parameters:
+      - name: include
+        in: query
+        example: ''
+        schema:
+          type: string
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/channel_product_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/channel_product_request"
+  "/v2/channel_products/{id}":
+    put:
+      summary: Update a channel_product
+      tags:
+      - ChannelProducts
+      parameters:
+      - name: include
+        in: query
+        example: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/channel_product_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/channel_product_request"
+    delete:
+      summary: Delete a channel_product
+      tags:
+      - ChannelProducts
+      parameters:
+      - name: include
+        in: query
+        example: ''
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/channel_product_response"
+  "/v2/channels":
+    get:
+      summary: Get all channels
+      tags:
+      - Channels
+      responses:
+        '200':
+          description: channel found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/channel_response"
+                  meta:
+                    "$ref": "#/components/schemas/meta"
+                required:
+                - data
+                - meta
+    post:
+      summary: Creates a channel
+      tags:
+      - Channels
+      parameters: []
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/channel_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/channel_request"
+  "/v2/channels/{id}":
+    get:
+      summary: Get single channel
+      tags:
+      - Channels
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: channel found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/channel_response"
+    put:
+      summary: Update a channel
+      tags:
+      - Channels
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/channel_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/channel_request"
+    delete:
+      summary: Delete a channel
+      tags:
+      - Channels
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/channel_response"
+  "/v2/platforms":
+    get:
+      summary: Get all platforms
+      tags:
+      - Platforms
+      responses:
+        '200':
+          description: platform found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/platform_response"
+                  meta:
+                    "$ref": "#/components/schemas/meta"
+                required:
+                - data
+                - meta
+    post:
+      summary: Creates a platform
+      tags:
+      - Platforms
+      parameters: []
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/platform_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/platform_request"
+  "/v2/platforms/{id}":
+    get:
+      summary: Get single platform
+      tags:
+      - Platforms
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: platform found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/platform_response"
+    put:
+      summary: Update a platform
+      tags:
+      - Platforms
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/platform_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/platform_request"
+    delete:
+      summary: Delete a platform
+      tags:
+      - Platforms
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/platform_response"
+  "/v2/producers":
+    get:
+      summary: Get all producers
+      tags:
+      - Producers
+      responses:
+        '200':
+          description: producer found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/producer_response"
+                  meta:
+                    "$ref": "#/components/schemas/meta"
+                required:
+                - data
+                - meta
+    post:
+      summary: Creates a producer
+      tags:
+      - Producers
+      parameters: []
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/producer_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/producer_request"
+  "/v2/producers/{id}":
+    get:
+      summary: Get single producer
+      tags:
+      - Producers
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: producer found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/producer_response"
+    put:
+      summary: Update a producer
+      tags:
+      - Producers
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/producer_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/producer_request"
+    delete:
+      summary: Delete a producer
+      tags:
+      - Producers
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/producer_response"
+  "/v2/product_eans":
+    post:
+      summary: Creates a product_ean
+      tags:
+      - ProductEans
+      parameters:
+      - name: include
+        in: query
+        schema:
+          type: string
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/product_ean_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/product_ean_request"
+  "/v2/product_eans/{id}":
+    put:
+      summary: Update a product_ean
+      tags:
+      - ProductEans
+      parameters:
+      - name: include
+        in: query
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/product_ean_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/product_ean_request"
+    delete:
+      summary: Delete a product_ean
+      tags:
+      - ProductEans
+      parameters:
+      - name: include
+        in: query
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/product_ean_response"
+  "/v2/product_groups":
+    get:
+      summary: Get all product_groups
+      tags:
+      - ProductGroups
+      responses:
+        '200':
+          description: product_group found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/product_group_response"
+                  meta:
+                    "$ref": "#/components/schemas/meta"
+                required:
+                - data
+                - meta
+    post:
+      summary: Creates a product_group
+      tags:
+      - ProductGroups
+      parameters: []
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/product_group_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/product_group_request"
+  "/v2/product_groups/{id}":
+    get:
+      summary: Get single product_group
+      tags:
+      - ProductGroups
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: product_group found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/product_group_response"
+    put:
+      summary: Update a product_group
+      tags:
+      - ProductGroups
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/product_group_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/product_group_request"
+    delete:
+      summary: Delete a product_group
+      tags:
+      - ProductGroups
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/product_group_response"
+  "/v2/products":
+    get:
+      summary: Get all products
+      tags:
+      - Products
+      responses:
+        '200':
+          description: product found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/product_response"
+                  meta:
+                    "$ref": "#/components/schemas/meta"
+                required:
+                - data
+                - meta
+    post:
+      summary: Creates a product
+      tags:
+      - Products
+      parameters: []
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/product_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/product_request"
+  "/v2/products/{id}":
+    get:
+      summary: Get single product
+      tags:
+      - Products
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: product found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/product_response"
+    put:
+      summary: Update a product
+      tags:
+      - Products
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/product_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/product_request"
+    delete:
+      summary: Delete a product
+      tags:
+      - Products
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/product_response"
+  "/v2/shipping_methods":
+    get:
+      summary: Get all shipping_methods
+      tags:
+      - ShippingMethods
+      parameters:
+      - name: include
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: shipping_method found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/shipping_method_response"
+                  meta:
+                    "$ref": "#/components/schemas/meta"
+                required:
+                - data
+                - meta
+    post:
+      summary: Creates a shipping_method
+      tags:
+      - ShippingMethods
+      parameters:
+      - name: include
+        in: query
+        schema:
+          type: string
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/shipping_method_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/shipping_method_request"
+  "/v2/shipping_methods/{id}":
+    get:
+      summary: Get single shipping_method
+      tags:
+      - ShippingMethods
+      parameters:
+      - name: include
+        in: query
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: shipping_method found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/shipping_method_response"
+    put:
+      summary: Update a shipping_method
+      tags:
+      - ShippingMethods
+      parameters:
+      - name: include
+        in: query
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/shipping_method_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/shipping_method_request"
+    delete:
+      summary: Delete a shipping_method
+      tags:
+      - ShippingMethods
+      parameters:
+      - name: include
+        in: query
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/shipping_method_response"
+  "/v2/shops":
+    get:
+      summary: Get all shops
+      tags:
+      - Shops
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.shops
+        schema:
+          type: string
+      responses:
+        '200':
+          description: shop found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/shop_response"
+                  meta:
+                    "$ref": "#/components/schemas/meta"
+                required:
+                - data
+                - meta
+    post:
+      summary: Creates a shop
+      tags:
+      - Shops
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.shops
+        schema:
+          type: string
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/shop_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/shop_request"
+  "/v2/shops/{id}":
+    get:
+      summary: Get single shop
+      tags:
+      - Shops
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.shops
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: shop found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/shop_response"
+    put:
+      summary: Update a shop
+      tags:
+      - Shops
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.shops
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/shop_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/shop_request"
+    delete:
+      summary: Delete a shop
+      tags:
+      - Shops
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.shops
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/shop_response"
+  "/v2/speditors":
+    get:
+      summary: Get all speditors
+      tags:
+      - Speditors
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.speditors
+        schema:
+          type: string
+      responses:
+        '200':
+          description: speditor found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/speditor_response"
+                  meta:
+                    "$ref": "#/components/schemas/meta"
+                required:
+                - data
+                - meta
+    post:
+      summary: Creates a speditor
+      tags:
+      - Speditors
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.speditors
+        schema:
+          type: string
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/speditor_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/speditor_request"
+  "/v2/speditors/{id}":
+    get:
+      summary: Get single speditor
+      tags:
+      - Speditors
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.speditors
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: speditor found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/speditor_response"
+    put:
+      summary: Update a speditor
+      tags:
+      - Speditors
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.speditors
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/speditor_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/speditor_request"
+    delete:
+      summary: Delete a speditor
+      tags:
+      - Speditors
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.speditors
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/speditor_response"
+  "/v2/users":
+    get:
+      summary: Get all users
+      tags:
+      - Users
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.users
+        schema:
+          type: string
+      responses:
+        '200':
+          description: user found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/user_response"
+                  meta:
+                    "$ref": "#/components/schemas/meta"
+                required:
+                - data
+                - meta
+    post:
+      summary: Creates a user
+      tags:
+      - Users
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.users
+        schema:
+          type: string
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/user_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/user_request"
+  "/v2/users/{id}":
+    get:
+      summary: Get single user
+      tags:
+      - Users
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.users
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: user found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/user_response"
+    put:
+      summary: Update a user
+      tags:
+      - Users
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.users
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/user_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/user_request"
+    delete:
+      summary: Delete a user
+      tags:
+      - Users
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.users
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/user_response"
+  "/v2/warehouses":
+    get:
+      summary: Get all warehouses
+      tags:
+      - Warehouses
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.warehouses
+        schema:
+          type: string
+      responses:
+        '200':
+          description: warehouse found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      "$ref": "#/components/schemas/warehouse_response"
+                  meta:
+                    "$ref": "#/components/schemas/meta"
+                required:
+                - data
+                - meta
+    post:
+      summary: Creates a warehouse
+      tags:
+      - Warehouses
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.warehouses
+        schema:
+          type: string
+      responses:
+        '201':
+          description: created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/warehouse_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/warehouse_request"
+  "/v2/warehouses/{id}":
+    get:
+      summary: Get single warehouse
+      tags:
+      - Warehouses
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.warehouses
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: warehouse found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/warehouse_response"
+    put:
+      summary: Update a warehouse
+      tags:
+      - Warehouses
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.warehouses
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/warehouse_response"
+        '422':
+          description: invalid_request
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/error"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/warehouse_request"
+    delete:
+      summary: Delete a warehouse
+      tags:
+      - Warehouses
+      parameters:
+      - name: include
+        in: query
+        example: channels,platforms.warehouses
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: deleted
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    "$ref": "#/components/schemas/warehouse_response"
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: localhost:3000
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: pim.tradecron.co
+components:
+  schemas:
+    error:
+      type: object
+      required:
+      - errors
+      properties:
+        errors:
+          type: array
+          items:
+            "$ref": "#components/schemas/error_item"
+    error_item:
+      type: object
+      properties:
+        source:
+          type: object
+          properties:
+            pointer:
+              type: string
+        details:
+          type: string
+    meta:
+      type: object
+      required:
+      - per_page
+      - current_page
+      - total_pages
+      - total_count
+      properties:
+        per_page:
+          type: number
+        current_page:
+          type: number
+        prev_page:
+          type: number
+          nullable: true
+        next_page:
+          type: number
+          nullable: true
+        total_pages:
+          type: number
+        total_count:
+          type: number
+    relationship:
+      type: object
+      required:
+      - id
+      - type
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+    allowed_ip_response:
+      type: object
+      required:
+      - id
+      - type
+      - attributes
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+          - name
+          - ip_address
+          properties:
+            name:
+              type: string
+            ip_address:
+              type: string
+    allowed_ip_request:
+      type: object
+      properties:
+        name:
+          type: string
+        ip_address:
+          type: string
+      required:
+      - name
+      - ip_address
+    available_country_response:
+      type: object
+      required:
+      - id
+      - type
+      - attributes
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+          - code
+          properties:
+            code:
+              type: string
+    available_country_request:
+      type: object
+      properties:
+        code:
+          type: string
+      required:
+      - code
+    available_currency_response:
+      type: object
+      required:
+      - id
+      - type
+      - attributes
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+          - code
+          properties:
+            code:
+              type: string
+    available_currency_request:
+      type: object
+      properties:
+        code:
+          type: string
+      required:
+      - code
+    category_response:
+      type: object
+      required:
+      - id
+      - type
+      - attributes
+      - relationships
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+          - name
+          - identifier
+          properties:
+            name:
+              type: string
+            identifier:
+              type: string
+        relationships:
+          type: object
+          required:
+          - parent
+          - products
+          - children
+          properties:
+            parent:
+              anyOf:
+              - type: 
+              - type: object
+                properties:
+                  data:
+                    "$ref": "#components/schemas/relationship"
+            products:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  type: array
+                  items:
+                    "$ref": "#components/schemas/relationship"
+            children:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  type: array
+                  items:
+                    "$ref": "#components/schemas/relationship"
+    category_request:
+      type: object
+      properties:
+        name:
+          type: string
+        identifier:
+          type: string
+        parent_id:
+          type: number
+      required:
+      - name
+      - identifier
+      - parent_id
+    channel_product_response:
+      type: object
+      required:
+      - id
+      - type
+      - relationships
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        relationships:
+          type: object
+          required:
+          - channel
+          - product
+          properties:
+            channel:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  "$ref": "#components/schemas/relationship"
+            product:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  "$ref": "#components/schemas/relationship"
+    channel_product_request:
+      type: object
+      properties:
+        channel_id:
+          type: number
+        product_id:
+          type: number
+      required:
+      - channel_id
+      - product_id
+    channel_response:
+      type: object
+      required:
+      - id
+      - type
+      - attributes
+      - relationships
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+          - name
+          - identifier
+          properties:
+            name:
+              type: string
+            identifier:
+              type: string
+        relationships:
+          type: object
+          required:
+          - shop
+          - platform
+          - channel_products
+          - products
+          properties:
+            shop:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  "$ref": "#components/schemas/relationship"
+            platform:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  "$ref": "#components/schemas/relationship"
+            channel_products:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  type: array
+                  items:
+                    "$ref": "#components/schemas/relationship"
+            products:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  type: array
+                  items:
+                    "$ref": "#components/schemas/relationship"
+    channel_request:
+      type: object
+      properties:
+        identifier:
+          type: string
+        shop_id:
+          type: number
+        platform_id:
+          type: number
+      required:
+      - identifier
+      - shop_id
+      - platform_id
+    platform_response:
+      type: object
+      required:
+      - id
+      - type
+      - attributes
+      - relationships
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+          - name
+          - identifier
+          - label_text
+          - label_color
+          - currency_code
+          - country_code
+          properties:
+            name:
+              type: string
+            identifier:
+              type: string
+            label_text:
+              type: string
+            label_color:
+              type: string
+            currency_code:
+              type: string
+            country_code:
+              type: string
+        relationships:
+          type: object
+          required: []
+          properties:
+            channels:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  type: array
+                  items:
+                    "$ref": "#components/schemas/relationship"
+            shops:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  type: array
+                  items:
+                    "$ref": "#components/schemas/relationship"
+    platform_request:
+      type: object
+      properties:
+        name:
+          type: string
+        identifier:
+          type: string
+        label_text:
+          type: string
+        label_color:
+          type: string
+        country_code:
+          type: string
+        currency_code:
+          type: string
+      required:
+      - name
+      - identifier
+      - label_text
+      - label_color
+      - country_code
+      - currency_code
+    producer_response:
+      type: object
+      required:
+      - id
+      - type
+      - attributes
+      - relationships
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+          - name
+          - identifier
+          - image
+          properties:
+            name:
+              type: string
+            identifier:
+              type: string
+            image:
+              type:
+              - string
+              - 
+        relationships:
+          type: object
+          required: []
+          properties:
+            products:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  type: array
+                  items:
+                    "$ref": "#components/schemas/relationship"
+    producer_request:
+      type: object
+      properties:
+        name:
+          type: string
+        identifier:
+          type: string
+        image:
+          type: string
+      required:
+      - name
+      - identifier
+      - image
+    product_ean_response:
+      type: object
+      required:
+      - id
+      - type
+      - attributes
+      - relationships
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+          - code
+          - is_master
+          properties:
+            code:
+              type: string
+            is_master:
+              type: boolean
+        relationships:
+          type: object
+          required:
+          - product
+          properties:
+            product:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  "$ref": "#components/schemas/relationship"
+    product_ean_request:
+      type: object
+      properties:
+        code:
+          type: string
+        is_master:
+          type: boolean
+        product_id:
+          type: number
+      required:
+      - code
+      - is_master
+      - product_id
+    product_group_response:
+      type: object
+      required:
+      - id
+      - type
+      - attributes
+      - relationships
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+          - name
+          - sku
+          properties:
+            name:
+              type: string
+            sku:
+              type: string
+        relationships:
+          type: object
+          required:
+          - products
+          properties:
+            products:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  type: array
+                  items:
+                    "$ref": "#components/schemas/relationship"
+    product_group_request:
+      type: object
+      properties:
+        name:
+          type: string
+        sku:
+          type: string
+      required:
+      - name
+      - sku
+    product_response:
+      type: object
+      required:
+      - id
+      - type
+      - attributes
+      - relationships
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+          - name
+          - sku
+          - weight
+          - status
+          - has_no_stocks
+          - has_qr_code
+          properties:
+            name:
+              type: string
+            sku:
+              type: string
+            weight:
+              type: string
+            status:
+              type: string
+            has_no_stocks:
+              type: boolean
+            has_qr_code:
+              type: boolean
+        relationships:
+          type: object
+          required:
+          - producer
+          - category
+          - product_group
+          - channels
+          - channel_products
+          - product_eans
+          properties:
+            producer:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  "$ref": "#components/schemas/relationship"
+            category:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  "$ref": "#components/schemas/relationship"
+            product_group:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  "$ref": "#components/schemas/relationship"
+            channels:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  type: array
+                  items:
+                    "$ref": "#components/schemas/relationship"
+            channel_products:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  type: array
+                  items:
+                    "$ref": "#components/schemas/relationship"
+            product_eans:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  type: array
+                  items:
+                    "$ref": "#components/schemas/relationship"
+    product_request:
+      type: object
+      properties:
+        name:
+          type: string
+        sku:
+          type: string
+        weight:
+          type: string
+        status:
+          type: string
+        has_no_stocks:
+          type: boolean
+        has_qr_code:
+          type: boolean
+        category_id:
+          type: number
+        producer_id:
+          type: number
+        product_group_id:
+          type: number
+      required:
+      - name
+      - sku
+      - weight
+      - status
+      - has_no_stocks
+      - has_qr_code
+      - category_id
+      - producer_id
+      - product_group_id
+    shipping_method_response:
+      type: object
+      required:
+      - id
+      - type
+      - attributes
+      - relationships
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+          - name
+          - identifier
+          properties:
+            name:
+              type: string
+            identifier:
+              type: string
+        relationships:
+          type: object
+          required:
+          - speditor
+          properties:
+            speditor:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  "$ref": "#components/schemas/relationship"
+    shipping_method_request:
+      type: object
+      properties:
+        name:
+          type: string
+        identifier:
+          type: string
+        speditor_id:
+          type: number
+      required:
+      - name
+      - identifier
+      - speditor_id
+    shop_response:
+      type: object
+      required:
+      - id
+      - type
+      - attributes
+      - relationships
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+          - name
+          - identifier
+          - website
+          - phone
+          - email
+          - bank_account
+          - street
+          - city
+          - zip_code
+          - label_text
+          - label_color
+          properties:
+            name:
+              type: string
+            identifier:
+              type: string
+            website:
+              type: string
+            phone:
+              type: string
+            email:
+              type: string
+            bank_account:
+              type: string
+            street:
+              type: string
+            city:
+              type: string
+            zip_code:
+              type: string
+            label_text:
+              type: string
+            label_color:
+              type: string
+        relationships:
+          type: object
+          required:
+          - channels
+          - platforms
+          properties:
+            channels:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  type: array
+                  items:
+                    "$ref": "#components/schemas/relationship"
+            platforms:
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  type: array
+                  items:
+                    "$ref": "#components/schemas/relationship"
+    shop_request:
+      type: object
+      properties:
+        name:
+          type: string
+        identifier:
+          type: string
+        website:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        bank_account:
+          type: string
+        street:
+          type: string
+        city:
+          type: string
+        zip_code:
+          type: string
+        label_text:
+          type: string
+        label_color:
+          type: string
+      required:
+      - name
+      - identifier
+      - website
+      - phone
+      - email
+      - bank_account
+      - street
+      - city
+      - zip_code
+      - label_text
+      - label_color
+    speditor_response:
+      type: object
+      required:
+      - id
+      - type
+      - attributes
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+          - name
+          - identifier
+          - tracking_url
+          - image
+          properties:
+            name:
+              type: string
+            identifier:
+              type: string
+            tracking_url:
+              type: string
+            image:
+              type:
+              - string
+              - 
+    speditor_request:
+      type: object
+      properties:
+        name:
+          type: string
+        identifier:
+          type: string
+        tracking_url:
+          type: string
+        image:
+          type: file
+      required:
+      - name
+      - identifier
+      - tracking_url
+      - image
+    user_response:
+      type: object
+      required:
+      - id
+      - type
+      - attributes
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+          - email
+          properties:
+            email:
+              type: string
+    user_request:
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+        password_confirmation:
+          type: string
+      required:
+      - email
+      - password
+      - password_confirmation
+    warehouse_response:
+      type: object
+      required:
+      - id
+      - type
+      - attributes
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          required:
+          - name
+          - identifier
+          - street
+          - city
+          - zip_code
+          - country_code
+          - is_virtual
+          properties:
+            name:
+              type: string
+            identifier:
+              type: string
+            street:
+              type: string
+            city:
+              type: string
+            zip_code:
+              type: string
+            country_code:
+              type: string
+            is_virtual:
+              type: boolean
+    warehouse_request:
+      type: object
+      properties:
+        name:
+          type: string
+        identifier:
+          type: string
+        street:
+          type: string
+        city:
+          type: string
+        zip_code:
+          type: string
+        country_code:
+          type: string
+        is_virtual:
+          type: boolean
+      required:
+      - name
+      - identifier
+      - street
+      - city
+      - zip_code
+      - country_code
+      - is_virtual
